@@ -14,6 +14,19 @@
       overflow: hidden;
     }
 
+    
+    #text-container {
+        position: fixed;
+        top: 5vh; 
+        left: 50%;
+        transform: translateX(-50%); 
+        width: 95%; 
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        pointer-events: none;
+    }
+
     h1,
     h2 {
       color: white;
@@ -22,30 +35,31 @@
       font-family: 'Inter';
       font-weight: 100;
       transition: opacity 0.5s ease-in-out;
+      margin: 0; 
     }
 
     #title {
-      position: fixed;
       font-size: 6em;
-      top: 0.5em;
+      
     }
 
     #artist {
-      position: fixed;
       font-size: 3em;
       color: gray;
-      top: 4em;
+      margin-top: 0.2em;
     }
     
     @media (max-width: 768px) {
+        #text-container {
+            top: 8vh; 
+        }
+
         #title {
-            font-size: 2.5em; 
-            top: 1em;
+            font-size: 2.5em;
         }
 
         #artist {
-            font-size: 1.5em; 
-            top: 6em;
+            font-size: 1.5em;
         }
     }
   </style>
@@ -53,7 +67,9 @@
 
 <body>
   <script type="module" src="main.js"></script>
-  <h1 id="title"></h1>
-  <h2 id="artist"></h2>
+  <div id="text-container">
+    <h1 id="title"></h1>
+    <h2 id="artist"></h2>
+  </div>
 </body>
 </html>
