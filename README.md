@@ -38,7 +38,7 @@ You will need [Node.js](https://nodejs.org/) and the npm package manager install
 
 1.  **Clone the repository** to your local machine:
     ```sh
-    git clone (https://github.com/abhaydesu/virtual-gallery.git)
+    git clone https://github.com/abhaydesu/virtual-gallery.git
     ```
 
 2.  **Navigate into the project directory**:
@@ -63,6 +63,8 @@ You will need [Node.js](https://nodejs.org/) and the npm package manager install
 ## Customization
 
 The gallery's collection can be easily customized.
+
+Note: Please don't add more than 7 'artworks' in the array.
 
 1.  **Add Image Files**: Place your artwork images (e.g., `.jpg`, `.png`) into the `public/` directory.
 

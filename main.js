@@ -1,6 +1,5 @@
 import * as THREE from 'three';
 import { Reflector } from 'three/examples/jsm/Addons.js';
-import { ThreeMFLoader } from 'three/examples/jsm/Addons.js';
 import { Easing, Tween, update as updateTween } from 'tween';
 
 const images = [
@@ -11,15 +10,6 @@ const images = [
   'mountain.jpg',
   'sunday.jpg'
 ];
-
-const nailah = [
-    'photo_1.jpg',
-    'photo_2.jpg',
-    'photo_3.jpg',
-    'photo_4.jpg',
-    'photo_5.jpg',
-    'photo_6.jpg',
-]
 
 const titles = [
   'The Death of Socrates',
@@ -151,15 +141,28 @@ function animate() {
 
 }
 
-window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize( window.innerWidth, window.innerHeight );
+function updateCameraAndRenderer() {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    const aspectRatio = width / height;
+
+    camera.aspect = aspectRatio;
     
-    mirror.getRenderTarget().setSize(
-        window.innerWidth, window.innerHeight
-    )
-})
+    if (aspectRatio < 1) {
+        camera.position.z = 2;
+    } else {
+        camera.position.z = 0;
+    }
+
+    camera.updateProjectionMatrix();
+
+    renderer.setSize(width, height);
+    
+    mirror.getRenderTarget().setSize(width, height);
+}
+
+
+window.addEventListener('resize', updateCameraAndRenderer);
 
 window.addEventListener('click', (ev) => {
     const raycaster = new THREE.Raycaster();
@@ -188,3 +191,5 @@ window.addEventListener('click', (ev) => {
 
     document.getElementById('title').innerText = titles[0];
     document.getElementById('artist').innerText = artists[0];
+
+updateCameraAndRenderer();
